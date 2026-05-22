@@ -1,0 +1,431 @@
+/* =====================================================================
+   CORE LANDING THEME & CONTAINER FIXES (SIDE WHITESPACE BLOCKS REMOVED)
+   ===================================================================== */
+
+.container {
+ width: 100%;                  /* Forces layout to occupy the complete viewport width */
+ max-width: 100% !important;   /* Strips out the rigid 1200px ceiling limit causing the dark side blocks */
+ margin: 0;
+padding: 0 40px;              /* Comfortable outer side padding for modern apps */
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, sans-serif;
+  color: #fff;
+  background: #0f0f11;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #222;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* =====================================================================
+   CLEAN COHESIVE BUTTON UI STRUCTURAL SPECIFICATIONS
+   ===================================================================== */
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Base structural footprint for standard action keys */
+.start-btn, .primary-btn, .secondary-btn, .run-project-live-btn, .btn-run {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;          /* Forces content to lock on a single baseline row */
+}
+
+/* Sky-blue developer actions profile styling */
+.start-btn, .primary-btn, .run-project-live-btn {
+  background-color: #38bdf8;
+  color: #0f172a;
+}
+.start-btn:hover, .primary-btn:hover, .run-project-live-btn:hover {
+  background-color: #7dd3fc;
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Standard functional key presets */
+.secondary-btn {
+  background: #22252a;
+  color: #fff;
+  border: 1px solid #444;
+}
+.secondary-btn:hover {
+  background: #2d3138;
+}
+
+.btn-run {
+  background-color: #4f46e5; /* Modern Indigo color */
+  color: white;
+}
+.btn-run:hover {
+  background-color: #4338ca;
+}
+.btn-run:active {
+  transform: scale(0.98);
+}
+
+/* =====================================================================
+   LAUNCHER PANEL CARD ADJUSTMENTS
+   ===================================================================== */
+.project-dashboard-container {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.landing-action-card {
+  background-color: #16181d;
+  border: 1px solid #242936;
+  border-radius: 12px;
+  padding: 40px 32px;
+  margin: 30px auto;
+  max-width: 720px;            /* Expanded box bounds to offer relaxed presentation space */
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+.description-text {
+  color: #a9b2c3;
+  font-size: 14px;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+/* =====================================================================
+   HERO DISPLAY MATRIX LAYOUT
+   ===================================================================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 80px 0;
+  align-items: center;
+}
+
+@media (max-width: 968px) {
+  .hero { grid-template-columns: 1fr; padding: 40px 0; }
+}
+
+.hero-content h1 {
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  color: #94a3b8;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* =====================================================================
+   SANDBOX IDE INTERFACE SCHEMATICS
+   ===================================================================== */
+.editor-preview {
+  background: #18181c;
+  border: 1px solid #2d2d34;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.editor-header {
+  background: #1e1e24;
+  padding: 12px;
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.editor-header span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5f56;
+}
+.editor-header span:nth-child(2) { background: #ffbd2e; }
+.editor-header span:nth-child(3) { background: #27c93f; }
+
+.preview-tag {
+  margin-left: auto;
+  font-size: 11px;
+  color: #38bdf8;
+  background: rgba(56, 189, 248, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.editor-body {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  height: 260px;
+}
+
+.sidebar {
+  background: #141416;
+  padding: 12px;
+  font-size: 13px;
+  color: #8a8a93;
+  border-right: 1px solid #222;
+}
+.sidebar p { margin: 0 0 12px 0; }
+
+.code-area {
+  background: #18181c;
+  padding: 15px;
+  margin: 0;
+  color: #a78bfa;
+  font-family: monospace;
+  overflow-y: auto;
+}
+.code-area pre { margin: 0; line-height: 1.5; font-size: 13px; }
+
+/* =====================================================================
+   FEATURES GRIDS
+   ===================================================================== */
+.features { padding: 6px 0 80px 0; }
+.features h2 { font-size: 28px; text-align: center; margin-bottom: 40px; }
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+.feature-card {
+  background: #141417;
+  border: 1px solid #222;
+  padding: 24px;
+  border-radius: 8px;
+}
+.feature-card h3 { font-size: 18px; margin: 0 0 12px 0; color: #38bdf8; }
+.feature-card p { color: #94a3b8; font-size: 14px; margin: 0; line-height: 1.5; }
+
+/* =====================================================================
+   COMPILER RUNTIME ENGINE OVERLAY PORTAL
+   ===================================================================== */
+.compiler-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.compiler-modal-container {
+  width: 100%;
+  max-width: 1280px;
+  height: 85vh;
+  background: #1e1e24;
+  border-radius: 12px;
+  border: 1px solid #33343f;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  animation: modalSlideUp 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.compiler-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #2d2d39;
+}
+
+.lang-selector label {
+  color: #94a3b8;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.lang-selector select {
+  background: #141417;
+  color: #fff;
+  border: 1px solid #444554;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.run-btn {
+  background: #10b981;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.run-btn:hover:not(:disabled) { background: #059669; }
+.run-btn:disabled { background: #444; color: #888; cursor: not-allowed; }
+
+.close-btn {
+  background: #2a2a35;
+  color: #cbd5e1;
+  border: 1px solid #444554;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.close-btn:hover { background: #ef4444; color: #fff; border-color: #ef4444; }
+
+.workspace-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+}
+
+@media (max-width: 768px) {
+  .workspace-grid { grid-template-columns: 1fr; }
+}
+
+.editor-window, .terminal-window {
+  display: flex;
+  flex-direction: column;
+  background: #141416;
+  border: 1px solid #2d2d39;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.window-header {
+  background: #1e1e24;
+  color: #94a3b8;
+  padding: 10px 16px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  border-bottom: 1px solid #2d2d39;
+}
+
+textarea {
+  flex: 1;
+  background: #141416;
+  color: #e2e8f0;
+  font-family: 'Fira Code', Consolas, Monaco, monospace;
+  font-size: 14px;
+  padding: 16px;
+  border: none;
+  resize: none;
+  outline: none;
+  line-height: 1.6;
+}
+
+.console-box {
+  flex: 1;
+  margin: 0;
+  padding: 16px;
+  background: #09090b;
+  color: #34d399;
+  font-family: 'Fira Code', Consolas, Monaco, monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  line-height: 1.5;
+}
+
+/* =====================================================================
+   ACTIVE WORKSPACE VIEWPORT INTEGRITY
+   ===================================================================== */
+.active-project-viewport {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #242936;
+  background-color: #0d0e12;
+}
+
+.viewport-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e222b;
+  padding: 10px 16px;
+  border-bottom: 1px solid #242936;
+}
+
+.status-indicator {
+  color: #27c93f;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.close-project-btn {
+  background: transparent;
+  border: 1px solid #ff5f56;
+  color: #ff5f56;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.close-project-btn:hover {
+  background-color: #ff5f56;
+  color: white;
+}

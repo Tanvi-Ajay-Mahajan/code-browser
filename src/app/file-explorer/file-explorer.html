@@ -1,0 +1,77 @@
+<section class="native-file-section">
+
+  <!-- CONTROLLER ENTRY ACCESS BAR LAYER -->
+  <div class="system-initializer-row">
+    <div class="meta-label">
+      <h3>💻 Direct Device OS File System Bridge</h3>
+      <p *ngIf="rootDirectoryName">Linked Workspace: <span class="active-path">{{ rootDirectoryName }}</span></p>
+      <p *ngIf="!rootDirectoryName" class="warn-msg">No machine workspace linked yet.</p>
+    </div>
+
+    <!-- THE ONE MASTER BUTTON FOR ALL OPERATIONS -->
+    <button class="master-fs-btn" (click)="openDeviceDirectory()">
+      📂 Open Local Device Project Folder
+    </button>
+  </div>
+
+  <!-- CORE INTERACTIVE WORKSPACE AREA -->
+  <div class="workspace-grid" *ngIf="deviceProjectTree.length > 0">
+
+    <!-- LEFT NAVIGATION COLUMN -->
+    <div class="explorer-sidebar">
+      <div class="tree-header">LOCAL DIRECTORY STRUCTURE</div>
+
+      <ul class="native-tree">
+        <!-- Reusable folder/file template container layout structure -->
+        <ng-container *ngTemplateOutlet="treeRenderer; context: { $implicit: deviceProjectTree }"></ng-container>
+      </ul>
+    </div>
+
+    <!-- RIGHT SOURCE WRITER SECTION PANEL -->
+    <div class="editor-workspace-panel">
+      <div class="panel-header" *ngIf="selectedFile">
+        <span>Editing Local File: <b>{{ selectedFile.name }}</b></span>
+        <button class="save-disk-btn" (click)="saveActiveFileChanges()">💾 Flush & Save to Device Disk</button>
+      </div>
+
+      <textarea
+        *ngIf="selectedFile"
+        [(ngModel)]="currentFileText"
+        spellcheck="false">
+      </textarea>
+
+      <div class="empty-billboard" *ngIf="!selectedFile">
+        <p>📂 Select any local disk resource text node on the left file tree menu array layout panel to open and edit source stream pipelines.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RECURSIVE ANGULAR TREE TEMPLATE MACRO BLOCKS -->
+<ng-template #treeRenderer let-items>
+  <li *ngFor="let item of items" [class.file-item-node]="item.type === 'file'" [class.folder-item-node]="item.type === 'folder'">
+
+    <!-- FOLDER ROWS -->
+    <div *ngIf="item.type === 'folder'" class="row-node folder-row" (click)="toggleFolder(item)">
+      <span class="chevron-arrow">{{ item.isOpen ? '▼' : '▶' }}</span>
+      <span class="ico">📁</span>
+      <span class="lbl">{{ item.name }}</span>
+    </div>
+
+    <!-- FILE ROWS -->
+    <div *ngIf="item.type === 'file'"
+         class="row-node file-row"
+         [class.selected-file]="selectedFile === item"
+         (click)="selectFile(item)">
+      <span class="ico">📄</span>
+      <span class="lbl">{{ item.name }}</span>
+    </div>
+
+    <!-- SUB CHILDREN LOOPS -->
+    <ul class="nested-sub-branch" *ngIf="item.type === 'folder' && item.isOpen">
+      <ng-container *ngTemplateOutlet="treeRenderer; context: { $implicit: item.children }"></ng-container>
+    </ul>
+
+  </li>
+</ng-template>

@@ -1,0 +1,97 @@
+/* src/app/npm/npm.css */
+@import '@xterm/xterm/css/xterm.css';
+
+/* The main layout engine context */
+.native-file-section {
+  background: #121214;
+  border: 1px solid #24242b;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 30px auto;
+  font-family: system-ui, -apple-system, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+
+/* BOTH ROWS SHARE THIS IDENTICAL BOX DESIGN RULES NOW */
+.system-initializer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1a1a1e;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #2d2d35;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+@media (max-width: 600px) {
+  .system-initializer-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.meta-label h3 { margin: 0 0 4px 0; color: #fff; font-size: 18px; }
+.meta-label p { margin: 0; font-size: 13px; color: #94a3b8; }
+.active-path { color: #38bdf8; font-weight: bold; font-family: monospace; }
+.warn-msg { color: #f59e0b !important; }
+
+/* REACTION COMMAND MASTER BUTTON BRAND LAYOUT (Both buttons share this style completely) */
+.master-fs-btn {
+  background: #38bdf8;
+  color: #0b0f19;
+  border: none;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.master-fs-btn:hover {
+  background: #7dd3fc;
+}
+
+/* INTEGRATED VS CODE BOTTOM TERMINAL ACCORDION INTERFACE */
+.vscode-terminal-panel {
+  background-color: #09090b; /* Matches your core .workspace-grid workspace base color */
+  border: 1px solid #2d2d35;
+  border-radius: 8px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.terminal-header-tabs {
+  display: flex;
+  background-color: #141417; /* Matches .explorer-sidebar base color background */
+  padding-left: 10px;
+  border-bottom: 1px solid #2d2d35;
+}
+
+.tab {
+  color: #64748b; /* Matches your .tree-header color map */
+  font-size: 11px;
+  font-weight: 700;
+  padding: 12px 16px;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+}
+
+.tab.active {
+  color: #38bdf8; /* Matches selected file accent colors */
+  border-bottom: 2px solid #38bdf8;
+  background: rgba(56, 189, 248, 0.04);
+}
+
+.real-terminal-element {
+  padding: 15px;
+  flex: 1;
+  background-color: #09090b;
+}

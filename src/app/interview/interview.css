@@ -1,0 +1,344 @@
+/* ========================================================================= */
+/* MAIN CONTAINER PLATFORM CANVAS                                            */
+/* ========================================================================= */
+.interview-workspace-container.leetcode-prep-theme {
+  display: grid;
+  grid-template-columns: 380px 1fr 280px; /* Force rigid 3-column split grid */
+  gap: 12px;
+  padding: 12px;
+  background-color: #1a1a1a;
+
+  /* Critical structural fixes to kill double scrollbars */
+  height: calc(100vh - 60px); /* Adjust '60px' to match your top header exact height */
+  max-height: calc(100vh - 60px);
+  box-sizing: border-box;
+  overflow: hidden; /* Prevents container bleeding down the page */
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ========================================================================= */
+/* COLUMN 1: PROBLEM CONTEXT & SPEC HUD                                      */
+/* ========================================================================= */
+.interview-sidebar.platform-spec-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: #282828;
+  border: 1px solid #383838;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.prep-tabs-nav {
+  display: flex;
+  background-color: #333333;
+  border-bottom: 1px solid #3e3e3e;
+  flex-shrink: 0; /* Keeps nav static */
+}
+
+.prep-tab {
+  background: transparent;
+  border: none;
+  color: #b3b3b3;
+  padding: 12px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.prep-tab:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.prep-tab.active {
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: inset 0 -2px 0 #ffa116; /* LeetCode Signature Orange Accent Line */
+}
+
+.whiteboard-tab {
+  color: #38bdf8;
+}
+
+/* Independent inner content scroller */
+.prep-scrollable-content {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.prep-scrollable-content::-webkit-scrollbar {
+  width: 6px;
+}
+.prep-scrollable-content::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 4px;
+}
+
+.problem-title {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+}
+
+.meta-badges-row {
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  margin-bottom: 14px;
+}
+
+.badge.diff-medium {
+  color: #ffa116;
+  background-color: rgba(255, 161, 22, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.telemetry-stat {
+  color: #8c8c8c;
+}
+
+.problem-statement-markdown {
+  font-size: 13px;
+  color: #eff2f6;
+  line-height: 1.6;
+}
+
+/* Technical Constraint Cards */
+.technical-constraints-box {
+  background-color: rgba(239, 83, 80, 0.03);
+  border: 1px solid rgba(239, 83, 80, 0.15);
+  padding: 12px;
+  border-radius: 6px;
+  margin-top: 14px;
+}
+
+.constraints-heading {
+  color: #ef5350;
+  margin: 0 0 6px 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.constraints-bullet-list {
+  margin: 0;
+  padding-left: 14px;
+  font-size: 11px;
+  color: #abb2bf;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ========================================================================= */
+/* COLUMN 2: CENTRAL PRODUCTION RUNTIME WORKSPACE                            */
+/* ========================================================================= */
+.interview-editor-viewport.vscode-dark-engine {
+  display: flex;
+  flex-direction: column;
+  background-color: #1e1e1e;
+  border: 1px solid #333333;
+  border-radius: 8px;
+  overflow: hidden;
+  height: 100%;
+}
+
+.editor-panel-heading {
+  background-color: #252526;
+  padding: 10px 14px;
+  border-bottom: 1px solid #333333;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #bcbcbc;
+  flex-shrink: 0;
+}
+
+.connection-status.online {
+  color: #2cbb5d;
+  font-weight: 500;
+}
+
+/* Force app-project nested layout to scale flawlessly */
+.interview-editor-viewport app-project {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ========================================================================= */
+/* COLUMN 3: WEBRTC FEEDS & MESSENGER INFRASTRUCTURE                         */
+/* ========================================================================= */
+.interview-comms-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.webrtc-stream-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Video Frame Standardizer */
+video.video-feed, .video-feed {
+  width: 100%;
+  height: 120px;
+  background-color: #282828;
+  border: 1px solid #383838;
+  border-radius: 6px;
+  object-fit: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+video.video-feed {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+video.video-feed:hover {
+  border-color: #424242;
+}
+
+video.video-feed.camera-active {
+  border-color: #2cbb5d;
+  box-shadow: 0 0 10px rgba(44, 187, 93, 0.15);
+}
+
+.mock-candidate-cam { background: linear-gradient(45deg, #1f2d3d, #252526); }
+.mock-interviewer-cam { background: linear-gradient(135deg, #2d1f3d, #252526); }
+
+.video-overlay-label {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  color: #ffffff;
+  font-weight: 500;
+  pointer-events: none; /* Keeps click actions passing cleanly directly to video element */
+}
+
+/* Messenger Workspace Panel */
+.live-chat-panel {
+  flex: 1;
+  background-color: #282828;
+  border: 1px solid #383838;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-header {
+  background-color: #333333;
+  padding: 10px 12px;
+  font-size: 11px;
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.chat-messages-box {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.message {
+  padding: 6px 10px;
+  border-radius: 6px;
+  line-height: 1.4;
+  max-width: 90%;
+}
+
+.system-msg {
+  background-color: #202020;
+  color: #7f848e;
+  align-self: center;
+  text-align: center;
+  font-size: 10px;
+}
+
+.interviewer-msg {
+  background-color: rgba(0, 180, 216, 0.1);
+  color: #00b4d8;
+  align-self: flex-start;
+}
+
+.user-msg {
+  background-color: rgba(44, 187, 93, 0.1);
+  color: #2cbb5d;
+  align-self: flex-end;
+}
+
+.chat-input-wrapper {
+  padding: 10px;
+  border-top: 1px solid #383838;
+  background-color: #202020;
+  flex-shrink: 0;
+}
+
+.chat-input-wrapper input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+
+/* ========================================================================= */
+/* BASE PANEL FOOTER ELEMENTS                                                */
+/* ========================================================================= */
+.panel-action-footer {
+  background-color: #333333;
+  padding: 10px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.timer-countdown-pill {
+  color: #ffa116;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: rgba(255, 161, 22, 0.05);
+  border: 1px solid rgba(255, 161, 22, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Interactive Mock Whiteboard Area */
+.canvas-mock-area {
+  background-color: #1e1e1e;
+  border: 2px dashed #424242;
+  height: 180px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: crosshair;
+  position: relative;
+}

@@ -1,0 +1,63 @@
+<div class="workspace-wrapper">
+
+  <!-- WORKSPACE SYSTEM NAVIGATION BAR -->
+  <header class="workspace-navbar">
+    <div class="meta-brand" (click)="exitWorkspace()">
+      <span class="back-arrow">←</span>
+      CodeBrowser
+      <span class="session-pill">Live Execution Sandbox</span>
+    </div>
+
+    <!-- CORE INTERACTIVE ENGINE CONTROL LAYOUT -->
+    <div class="runtime-controls">
+      <div class="select-wrapper">
+        <select
+          [(ngModel)]="selectedLanguageKey"
+          (change)="onLanguageChange()"
+          [disabled]="isExecuting">
+          <option value="javascript">JavaScript (Node v20)</option>
+          <option value="python">Python (v3.11)</option>
+          <option value="typescript">TypeScript Compiler</option>
+        </select>
+      </div>
+
+      <button
+        class="execute-btn"
+        [disabled]="isExecuting"
+        (click)="runCode()">
+        <span class="btn-content">
+          {{ isExecuting ? '⚙ Running Engine...' : '⚡ Run Code' }}
+        </span>
+      </button>
+    </div>
+  </header>
+
+  <!-- SPLIT SCREEN WORKSPACE PANE -->
+  <main class="workspace-body">
+
+    <!-- SOURCE CODE INPUT TERMINAL PANEL -->
+    <div class="pane-editor">
+      <div class="pane-tab">
+        <span class="tab-icon">📄</span>
+        workspace_source.src
+        <small class="editable-badge">Editable Workspace</small>
+      </div>
+      <textarea
+        [(ngModel)]="editorCode"
+        spellcheck="false"
+        placeholder="// Write or paste your dynamic runtime program script logic here...">
+      </textarea>
+    </div>
+
+    <!-- OUTPUT LOG / SANDBOX VIRTUAL TERMINAL -->
+    <div class="pane-terminal">
+      <div class="pane-tab">
+        <span class="tab-icon">💻</span>
+        Virtual Terminal Logs
+        <span class="live-pulse" *ngIf="isExecuting"></span>
+      </div>
+      <pre class="terminal-core">{{ consoleOutput }}</pre>
+    </div>
+
+  </main>
+</div>

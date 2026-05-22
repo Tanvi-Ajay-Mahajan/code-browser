@@ -1,0 +1,104 @@
+<div class="interview-workspace-container leetcode-prep-theme" (window:blur)="onWindowBlur()">
+
+  <div class="interview-sidebar platform-spec-panel">
+    <div class="prep-tabs-nav">
+      <button class="prep-tab" [class.active]="activeTab === 'desc'" (click)="activeTab = 'desc'">📄 Description</button>
+      <button class="prep-tab" [class.active]="activeTab === 'cases'" (click)="activeTab = 'cases'">🧪 Test Cases</button>
+      <button class="prep-tab whiteboard-tab" [class.active]="activeTab === 'board'" (click)="activeTab = 'board'">🎨 Whiteboard</button>
+    </div>
+
+    <div class="prep-scrollable-content">
+      <div class="tab-view-container" *ngIf="activeTab === 'desc'">
+        <h1 class="problem-title">1423. String Tokenizer Streamer</h1>
+        <div class="meta-badges-row">
+          <span class="badge diff-medium">Medium</span>
+          <span class="telemetry-stat">⏱️ Target: O(N) Space</span>
+        </div>
+        <p class="problem-statement-markdown">
+          Design a low-overhead parser that processes character inputs and immediately yields completed tokens when a delimiter is hit without blocking the rendering thread loop.
+        </p>
+        <div class="technical-constraints-box">
+          <h4 class="constraints-heading">⚠️ Security Integrity Rules</h4>
+          <ul class="constraints-bullet-list">
+            <li>Tab switches logged: <code class="error-text">{{ tabFocusInfractions }} warning(s)</code></li>
+            <li>All memory runs strictly in isolated client sandbox cache frames.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tab-view-container" *ngIf="activeTab === 'cases'">
+        <h4 class="section-title-label">Code Verification</h4>
+        <div class="test-case-pills-row">
+          <button class="case-pill run-passed">Case 1 <span>●</span></button>
+          <button class="case-pill run-failed">Case 2 <span>●</span></button>
+        </div>
+        <div class="case-io-inspector">
+          <div><span class="io-label">Input:</span> <code>"chunk_stream_alpha"</code></div>
+          <div><span class="io-label">Expected:</span> <code>["chunk","stream","alpha"]</code></div>
+        </div>
+      </div>
+
+      <div class="tab-view-container" *ngIf="activeTab === 'board'">
+        <h4 class="section-title-label">Shared Architecture Whiteboard Canvas</h4>
+        <div class="canvas-mock-area" (click)="drawMockLine()">
+          <p class="canvas-placeholder-text" *ngIf="!isWhiteboardActive">Click inside this field to sketch system diagrams...</p>
+          <div class="mock-vector-line" *ngIf="isWhiteboardActive"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-action-footer">
+      <span class="timer-countdown-pill">⏱️ Time Left: {{ timeLeftString }}</span>
+    </div>
+  </div>
+
+  <div class="interview-editor-viewport vscode-dark-engine">
+    <div class="editor-panel-heading">
+      <span class="file-name-label">💡 main.ts (Collaborative Sync Active)</span>
+      <span class="connection-status online">● Local Sandbox Core Ready</span>
+    </div>
+    <app-project></app-project>
+  </div>
+
+  <div class="interview-comms-sidebar">
+    <div class="webrtc-stream-box">
+     <div class="webrtc-stream-box">
+
+  <video
+    #candidateVideo
+    autoplay
+    playsinline
+    muted
+    class="video-feed mock-candidate-cam"
+    [class.camera-active]="isCameraOn"
+    (click)="toggleCandidateCamera(candidateVideo)"
+    title="Click to turn on webcam">
+
+    <div class="video-overlay-label" *ngIf="!isCameraOn">
+      your Feed (Click to Turn On Camera)
+    </div>
+    <div class="video-overlay-label" *ngIf="isCameraOn">
+      🟢 Live Feed (You)
+    </div>
+  </video>
+
+  <div class="video-feed mock-interviewer-cam">
+    <div class="video-overlay-label"> Interviewer Feed</div>
+  </div>
+</div>
+
+
+    <div class="live-chat-panel">
+      <div class="chat-header">💬 Live Session Chat</div>
+      <div class="chat-messages-box">
+        <div class="message system-msg">System: Workspace sync connection established successfully.</div>
+        <div class="message interviewer-msg"><strong>Interviewer:</strong> Welcome! Let me know if you have questions about the O(1) constraints.</div>
+        <div class="message user-msg" *ngFor="let msg of chatMessages"><strong>You:</strong> {{ msg }}</div>
+      </div>
+      <div class="chat-input-wrapper">
+        <input type="text" #chatInput placeholder="Type message..." (keyup.enter)="sendChatMessage(chatInput)" />
+      </div>
+    </div>
+  </div>
+
+</div>

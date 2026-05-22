@@ -1,0 +1,23 @@
+<div class="native-file-section">
+
+  <div class="system-initializer-row">
+    <div class="meta-label">
+      <h3>Package Script Execution</h3>
+      <p>Run your project local environments via <span class="active-path">npm run start</span></p>
+    </div>
+    <div class="action-block">
+      <button class="master-fs-btn" (click)="openVSCodeTerminal()">
+        ▶ npm run
+      </button>
+    </div>
+  </div>
+
+  <div class="vscode-terminal-panel" *ngIf="showConsole">
+    <div class="terminal-header-tabs">
+
+      <div class="tab active">TERMINAL</div>
+    </div>
+    <div #terminalContainer class="real-terminal-element"></div>
+  </div>
+
+</div>

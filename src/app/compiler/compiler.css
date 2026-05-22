@@ -1,0 +1,96 @@
+.workspace-wrapper {
+  background: #111112;
+  color: #e3e3e6;
+  font-family: system-ui, -apple-system, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.workspace-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #1c1c1e;
+  padding: 12px 24px;
+  border-bottom: 1px solid #2c2c2e;
+}
+.meta-brand {
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.session-pill {
+  font-size: 11px;
+  background: #2c2c2e;
+  color: #0a84ff;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.runtime-controls {
+  display: flex;
+  gap: 12px;
+}
+.runtime-controls select {
+  background: #2c2c2e;
+  border: 1px solid #3a3a3c;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  outline: none;
+}
+.execute-btn {
+  background: #30d158;
+  color: black;
+  border: none;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.execute-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.workspace-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  min-height: 0;
+}
+.pane-editor, .pane-terminal {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #2c2c2e;
+}
+.pane-tab {
+  background: #1c1c1e;
+  padding: 8px 16px;
+  font-size: 12px;
+  color: #aeaeaf;
+  border-bottom: 1px solid #2c2c2e;
+}
+textarea {
+  flex: 1;
+  background: #151516;
+  color: #9cdcfe;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 16px;
+  border: none;
+  resize: none;
+  outline: none;
+  line-height: 1.6;
+}
+.terminal-core {
+  flex: 1;
+  background: #000000;
+  color: #30d158;
+  margin: 0;
+  padding: 16px;
+  font-family: monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+  overflow-y: auto;
+}

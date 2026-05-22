@@ -1,0 +1,143 @@
+/* project.component.css */
+
+/* Main layout wrapper */
+.native-file-section {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px); /* Adjust based on your top nav height */
+  background-color: #0d0e12;    /* Dark background matching your app card space */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Flex container for Editor and Preview splits */
+.workspace-grid {
+  display: flex;
+  gap: 16px; /* Elegant separation spacing instead of direct borders */
+  width: 100%;
+  height: 100%;
+}
+
+/* Panel Design (Both Editor and Browser Containers) */
+.editor-workspace-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #16181d; /* Subtle lighter dark shade for cards */
+  border: 1px solid #242936;  /* Deep dark border lines */
+  border-radius: 8px;        /* Matches the soft curved borders in your screenshot */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Top Panel Headers (Simulating IDE / Browser toolbar) */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: #1e222b; /* Distinct header section background */
+  border-bottom: 1px solid #242936;
+  color: #a9b2c3;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Textarea / Code Editor Window styling */
+textarea {
+  flex: 1;
+  background-color: #16181d;
+  color: #e3e6ed;
+  border: none;
+  resize: none;
+  padding: 16px;
+  font-family: 'Consolas', 'Fira Code', Monaco, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  outline: none;
+}
+
+/* Custom Scrollbar for Textarea to keep it dark */
+textarea::-webkit-scrollbar {
+  width: 10px;
+}
+textarea::-webkit-scrollbar-track {
+  background: #16181d;
+}
+textarea::-webkit-scrollbar-thumb {
+  background: #2c313d;
+  border-radius: 5px;
+}
+
+/* Hot Reload Action Button inside code header */
+.save-disk-btn {
+  background-color: #38bdf8; /* Vibrant cyan accent match */
+  color: #0f172a;
+  border: none;
+  padding: 6px 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.save-disk-btn:hover {
+  background-color: #7dd3fc;
+}
+
+.save-disk-btn:active {
+  transform: scale(0.97);
+}
+
+/* --- Browser Viewport Header Specifics --- */
+.browser-top {
+  background-color: #1e222b;
+  gap: 12px;
+}
+
+/* Window Minimize/Maximize Mac-like dots */
+.window-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.circle.red    { background-color: #ff5f56; }
+.circle.yellow { background-color: #ffbd2e; }
+.circle.green  { background-color: #27c93f; }
+
+/* Clean Mock Browser Address Input Box */
+.address-bar-input {
+  flex: 1;
+  background-color: #0f1115;
+  color: #626b7c;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-family: monospace;
+  border: 1px solid #242936;
+  max-width: 70%;
+}
+
+/* Iframe Area wrapper */
+.browser-viewport {
+  flex: 1;
+  background-color: #ffffff; /* Kept white so your previewed HTML renders normally */
+}
+
+.live-iframe-element {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

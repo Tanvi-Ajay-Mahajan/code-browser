@@ -1,0 +1,34 @@
+<div class="native-file-section">
+
+  <div class="workspace-grid">
+
+    <div class="editor-workspace-panel">
+      <div class="panel-header">
+        <span>📄 index.html</span>
+        <button class="save-disk-btn" (click)="updateLivePreview()">⚡ Hot Reload</button>
+      </div>
+      <textarea
+        [(ngModel)]="editableCode"
+        (input)="onCodeChange()"
+        placeholder="Type HTML/CSS code here...">
+      </textarea>
+    </div>
+
+    <div class="editor-workspace-panel left-border">
+      <div class="panel-header browser-top">
+        <div class="window-controls">
+          <span class="circle red"></span>
+          <span class="circle yellow"></span>
+          <span class="circle green"></span>
+        </div>
+        <div class="address-bar-input">http://localhost:4200/preview</div>
+      </div>
+      <div class="browser-viewport">
+        <iframe #previewFrame sandbox="allow-scripts" class="live-iframe-element"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>

@@ -133,30 +133,7 @@ padding: 0 40px;              /* Comfortable outer side padding for modern apps 
 /* =====================================================================
    HERO DISPLAY MATRIX LAYOUT
    ===================================================================== */
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 80px 0;
-  align-items: center;
-}
-
-@media (max-width: 968px) {
-  .hero { grid-template-columns: 1fr; padding: 40px 0; }
-}
-
-.hero-content h1 {
-  font-size: 42px;
-  line-height: 1.2;
-  margin-bottom: 20px;
-}
-
-.hero-content p {
-  color: #94a3b8;
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
+.hero { display: flex; align-items: center; justify-content: space-between; gap: 80px; min-height: calc(100vh - 80px); } .hero-content { flex: 1; } .hero-content h1 { font-size: clamp(3rem, 5vw, 5rem); line-height: 1.1; margin-bottom: 25px; font-weight: 800; } .hero-content p { color: var(--muted); font-size: 18px; line-height: 1.8; max-width: 600px; } .editor-preview { flex: 1; max-width: 650px; background: #111827; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; cursor: pointer; box-shadow: 0 25px 60px rgba(0,0,0,.4); }
 
 /* =====================================================================
    SANDBOX IDE INTERFACE SCHEMATICS

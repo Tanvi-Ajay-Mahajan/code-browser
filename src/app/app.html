@@ -1,150 +1,152 @@
 <div class="container">
 
-  <nav class="navbar">
-    <div class="logo">CodeBrowser</div>
+<nav class="navbar">
+<div class="logo">CodeBrowser</div>
 
-    <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a (click)="startLiveProject()">Project</a></li>
-      <li><a (click)="startInterviewSession()">Interviews</a></li>
-    </ul>
+<ul class="nav-links">
+ <li><a href="#features">Features</a></li>
+ <li><a href="#project" (click)="startLiveProject()">Project</a></li>
+ <li><a href="#interviews" (click)="startInterviewSession()">Interviews</a></li>
+ </ul>
 
-    <button class="start-btn" (click)="startCoding()">Start Coding</button>
-  </nav>
+ <button class="start-btn" (click)="startCoding()">Start Coding</button>
+ </nav>
 
-  <ng-container *ngIf="!isCodingMode && !isProjectRunning && !isInterviewRunning">
+<section class="hero" *ngIf="!isCodingMode && !isProjectRunning && !isInterviewRunning">
+<div class="hero-content">
+ <h1>
+ Code, Run Projects & Complete Interviews Entirely From The Browser
+</h1>
+<p>
+ No local setup required. Access files, install npm packages , run projects, and collaborate directly in your browser.
+</p>
 
-    <section class="hero">
-      <div class="hero-content">
-        <h1>
-          Code, Run Projects & Complete Interviews Entirely From The Browser
-        </h1>
-        <p>
-          No local setup required. Access files, install npm packages,
-          run projects, and collaborate directly in your browser.
-        </p>
-      </div>
+</div>
 
-      <div class="editor-preview" (click)="startCoding()" title="Click to open playground">
-        <div class="editor-header">
-          <span></span><span></span><span></span>
-        </div>
-        <div class="editor-body">
-          <div class="sidebar">
-            <p>📁 src</p>
-            <p>📄 app.component.ts</p>
-            <p>📄 app.component.html</p>
-            <p>📄 package.json</p>
-          </div>
-          <div class="code-area">
-            <pre>
+ <div class="editor-preview" (click)="startCoding()" title="Click to open playground">
+ <div class="editor-header">
+ <span></span><span></span><span></span>
+
+ </div>
+ <div class="editor-body">
+ <div class="sidebar">
+ <p>📁 src</p>
+ <p>📄 app.component.ts</p>
+ <p>📄 app.component.html</p>
+ <p>📄 package.json</p>
+ </div>
+ <div class="code-area">
+<pre>
 npm install express
 ✔ Packages installed successfully
 
 ng serve
 ✔ Application running on: http://localhost:4200
-            </pre>
-          </div>
-        </div>
-      </div>
-    </section>
+</pre>
+</div>
+</div>
+ </div>
+</section>
 
-    <div class="project-dashboard-container">
-      <div class="landing-action-card">
-        <div class="card-content">
-          <h2 class="platform-title">Launch Workspace Module</h2>
-          <p class="description-text">
-            Select an isolated developer utility module to launch your local cloud testing runtime environment.
-          </p>
-          <div class="feature-button-group">
-            <button class="run-project-live-btn project-blue" (click)="startLiveProject()">
-              🚀 Run Project Live
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="project-dashboard-container" *ngIf="!isCodingMode && !isProjectRunning && !isInterviewRunning">
+<div class="landing-action-card">
+<div class="card-content">
+ <h2 class="platform-title">Launch Workspace Module</h2>
+ <p class="description-text">
+Select an isolated developer utility module to launch your local cloud testing runtime environment.
+</p>
+<div class="feature-button-group">
+<button class="run-project-live-btn project-blue" (click)="startLiveProject()">
+🚀 Run Project Live
+</button>
+ </div>
+ </div>
+ </div>
+</div>
 
-  </ng-container>
+<div class="active-project-viewport" *ngIf="isProjectRunning">
+<div class="viewport-header">
+ <span class="status-indicator live-color">● Live Sandbox Active</span>
+ <button class="close-project-btn" (click)="stopAllSessions()">✕ Close Session</button>
+</div>
 
-  <div class="active-project-viewport" *ngIf="isProjectRunning">
-    <div class="viewport-header">
-      <span class="status-indicator live-color">● Live Sandbox Active</span>
-      <button class="close-project-btn" (click)="stopAllSessions()">✕ Close Session</button>
-    </div>
-    <app-file-explorer></app-file-explorer>
-    <app-npm></app-npm>
-    <app-project></app-project>
-  </div>
+<app-file-explorer></app-file-explorer>
+<app-npm></app-npm>
+<app-project></app-project>
+</div>
 
-  <div class="active-project-viewport" *ngIf="isInterviewRunning">
-    <div class="viewport-header">
-      <span class="status-indicator interview-color">● Live Evaluation Environment Running</span>
-      <button class="close-project-btn" (click)="stopAllSessions()">✕ End Interview</button>
-    </div>
-    <app-interview></app-interview>
-  </div>
+<div class="active-project-viewport" *ngIf="isInterviewRunning">
+<div class="viewport-header">
+<span class="status-indicator interview-color">● Live Evaluation Environment Running</span>
+<button class="close-project-btn" (click)="stopAllSessions()">✕ End Interview</button>
+</div>
+<app-interview></app-interview>
+</div>
 
-  <div class="compiler-modal-overlay" *ngIf="isCodingMode">
-    <div class="compiler-modal-container">
-      <div class="compiler-toolbar">
-        <div class="lang-selector">
-          <label for="lang">Select Language: </label>
-          <select id="lang" [(ngModel)]="selectedLanguageKey" (change)="onLanguageChange()">
-            <option value="javascript">JavaScript (Node.js)</option>
-            <option value="python">Python 3</option>
-            <option value="typescript">TypeScript Compiler</option>
-          </select>
-        </div>
-        <div class="toolbar-actions">
-          <button class="run-btn" [disabled]="isExecuting" (click)="runCode()">
-            {{ isExecuting ? 'Running...' : '▶ Run Code' }}
-          </button>
-          <button class="close-btn" (click)="isCodingMode = false">✕ Close</button>
-        </div>
-      </div>
+<div *ngIf="isCodingMode" class="compiler-modal-overlay">
+<div class="compiler-modal-container">
 
-      <div class="workspace-grid">
-        <div class="editor-window">
-          <div class="window-header">Editor workspace input</div>
-          <textarea [(ngModel)]="editorCode" spellcheck="false" placeholder="Write your code here..."></textarea>
-        </div>
-        <div class="terminal-window">
-          <div class="window-header">Terminal Console output</div>
-          <pre class="console-box">{{ consoleOutput }}</pre>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="compiler-toolbar">
+<div class="lang-selector">
+<label for="lang">Select Language: </label>
+<select id="lang" [(ngModel)]="selectedLanguageKey" (change)="onLanguageChange()">
+<option value="javascript">JavaScript (Node.js)</option>
+<option value="python">Python 3</option>
+ <option value="typescript">TypeScript Compiler</option>
+ </select>
+ </div>
 
-  <section class="features" id="features">
-    <h2>Platform Features</h2>
-    <div class="feature-grid">
-      <div class="feature-card">
-        <h3>Browser IDE</h3>
-        <p>Write and execute code directly from the browser with zero setup.</p>
-      </div>
-      <div class="feature-card">
-        <h3>File Access</h3>
-        <p>Manage project files and folders using an integrated file explorer.</p>
-      </div>
-      <div class="feature-card">
-        <h3>npm Install</h3>
-        <p>Install npm packages instantly without configuring local environments.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Interview Environment</h3>
-        <p>Conduct coding interviews with real-time collaboration and execution.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Live Preview</h3>
-        <p>Preview frontend applications instantly while developing.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Cloud Workspace</h3>
-        <p>Save and access your coding workspace from anywhere.</p>
-      </div>
-    </div>
-  </section>
+<div class="toolbar-actions">
+<button class="run-btn" [disabled]="isExecuting" (click)="runCode()">
+{{ isExecuting ? 'Running...' : '▶ Run Code' }}
+</button>
+ <button class="close-btn" (click)="isCodingMode = false">✕ Close</button>
+ </div>
+</div>
+
+ <div class="workspace-grid">
+ <div class="editor-window">
+ <div class="window-header">Editor workspace input</div>
+ <textarea [(ngModel)]="editorCode" spellcheck="false" placeholder="Write your code here..."></textarea>
+</div>
+
+ <div class="terminal-window">
+ <div class="window-header">Terminal Console output</div>
+ <pre class="console-box">{{ consoleOutput }}</pre>
+ </div>
+</div>
+
+</div>
+</div>
+
+ <section class="features" id="features">
+ <h2>Platform Features</h2>
+ <div class="feature-grid">
+ <div class="feature-card">
+ <h3>Browser IDE</h3>
+ <p>Write and execute code directly from the browser with zero setup.</p>
+ </div>
+ <div class="feature-card">
+   <h3>File Access</h3>
+<p>Manage project files and folders using an integrated file explorer.</p>
+</div>
+<div class="feature-card">
+ <h3>npm Install</h3>
+ <p>Install npm packages instantly without configuring local environments.</p>
+ </div>
+<div class="feature-card">
+ <h3>Interview Environment</h3>
+ <p>Conduct coding interviews with real-time collaboration and execution.</p>
+</div>
+<div class="feature-card">
+<h3>Live Preview</h3>
+ <p>Preview frontend applications instantly while developing.</p>
+ </div>
+<div class="feature-card">
+ <h3>Cloud Workspace</h3>
+ <p>Save and access your coding workspace from anywhere.</p>
+ </div>
+ </div>
+ </section>
 
 </div>
